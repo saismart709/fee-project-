@@ -1,0 +1,6 @@
+/* Container wrapper for child views */
+.faculty-wrapper {
+  padding: 20px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}

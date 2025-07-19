@@ -1,0 +1,48 @@
+<div class="tt-container">
+  <h2>Create Weekly Timetable</h2>
+
+  <div class="tt-form-row">
+    <div class="tt-field">
+      <label>Department</label>
+      <select [(ngModel)]="department">
+        <option value="" disabled selected>Select department</option>
+        <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
+      </select>
+    </div>
+
+    <div class="tt-field">
+      <label>Semester</label>
+      <select [(ngModel)]="semester">
+        <option *ngFor="let sem of semesters" [value]="sem">{{ sem }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="tt-table-wrapper">
+    <table class="tt-table">
+      <thead>
+      <tr>
+        <th>Day</th>
+        <th *ngFor="let period of periods">Period {{ period }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let day of days">
+        <td class="day-col">{{ day }}</td>
+        <td *ngFor="let entry of timetableData[day]; let i = index">
+          <input [(ngModel)]="entry.subject" placeholder="eg..Subject" />
+          <input [(ngModel)]="entry.timeSlot" placeholder="eg..Period 1" />
+          <input [(ngModel)]="entry.facultyName" placeholder="eg..Faculty" />
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tt-actions">
+    <button (click)="submit()" [disabled]="loading">Submit Timetable</button>
+    <div class="tt-spinner" *ngIf="loading"></div>
+  </div>
+
+  <div id="tt-toast" class="tt-toast" [class.show]="showToast">{{ toastMessage }}</div>
+</div>

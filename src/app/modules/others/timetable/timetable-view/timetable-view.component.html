@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="filter-bar">
+    <label>Department:
+      <select [(ngModel)]="department" (change)="onFilterChange()">
+        <option [ngValue]="''">All</option>
+        <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
+      </select>
+    </label>
+
+    <label>Semester:
+      <select [(ngModel)]="semester" (change)="onFilterChange()">
+        <option [ngValue]="undefined">All</option>
+        <option *ngFor="let sem of semesters" [value]="sem">{{ sem }}</option>
+      </select>
+    </label>
+
+    <label>Search:
+      <input type="text" [(ngModel)]="searchTerm" (input)="onFilterChange()" placeholder="Search by subject, faculty, time or day..." />
+    </label>
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Day</th>
+      <th>Time Slot</th>
+      <th>Subject</th>
+      <th>Faculty</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let entry of paginatedList">
+      <!-- VIEW MODE -->
+      <ng-container *ngIf="editingId !== entry.id; else editRow">
+        <td>{{ entry.day }}</td>
+        <td>{{ entry.timeSlot }}</td>
+        <td>{{ entry.subject }}</td>
+        <td>{{ entry.facultyName }}</td>
+        <td>
+          <button (click)="startEdit(entry)">Edit</button>
+          <button (click)="deleteEntry(entry.id)">Delete</button>
+        </td>
+      </ng-container>
+
+      <!-- EDIT MODE -->
+      <ng-template #editRow>
+        <td><input [(ngModel)]="editedEntry.day" /></td>
+        <td><input [(ngModel)]="editedEntry.timeSlot" /></td>
+        <td><input [(ngModel)]="editedEntry.subject" /></td>
+        <td><input [(ngModel)]="editedEntry.facultyName" /></td>
+        <td>
+          <button (click)="saveEdit(entry.id)">Save</button>
+          <button (click)="cancelEdit()">Cancel</button>
+        </td>
+      </ng-template>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination Controls -->
+  <div class="pagination-controls">
+    <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ Math.ceil(filteredTimetableList.length / itemsPerPage) }}</span>
+    <button (click)="goToNextPage()" [disabled]="currentPage >= Math.ceil(filteredTimetableList.length / itemsPerPage)">Next</button>
+  </div>
+</div>
+

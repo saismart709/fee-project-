@@ -1,0 +1,375 @@
+/* Professional Timetable Styles */
+.tt-container {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  width: 90%;
+}
+
+h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 2.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Form Row */
+.tt-form-row {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.tt-field {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.tt-field label {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.tt-field select {
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1e293b;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23374151' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+.tt-field select:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.tt-field select:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 1);
+  border-color: #3b82f6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tt-field select option {
+  background: #ffffff;
+  color: #1e293b;
+  padding: 0.5rem;
+}
+
+/* Timetable Table */
+.tt-table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tt-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  margin-bottom: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.9rem;
+  table-layout: fixed;
+}
+
+.tt-table th {
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tt-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  vertical-align: top;
+  text-align: left;
+}
+
+.tt-table tr:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tt-table tr:last-child td {
+  border-bottom: none;
+}
+
+.day-col {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  min-width: 120px;
+  width: 120px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Period Cell Styling */
+.tt-table td:not(.day-col) {
+  width: 220px;
+  min-width: 220px;
+  padding: 0.6rem 0.8rem;
+  vertical-align: top;
+}
+
+/* Input Fields in Period Cells */
+.tt-table input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  display: block;
+}
+
+.tt-table input:first-child {
+  margin-top: 0;
+}
+
+.tt-table input:last-child {
+  margin-bottom: 0;
+}
+
+.tt-table input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tt-table input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+}
+
+/* Subject Input */
+.tt-table input[placeholder="Subject"] {
+  font-weight: 500;
+}
+
+/* Time Input */
+.tt-table input[placeholder="Time"] {
+  font-weight: 400;
+}
+
+/* Faculty Input */
+.tt-table input[placeholder="Faculty"] {
+  font-weight: 400;
+}
+
+/* Actions */
+.tt-actions {
+  text-align: center;
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tt-actions button {
+  background: #3b82f6;
+  color: #ffffff;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+}
+
+.tt-actions button:hover:not(:disabled) {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
+}
+
+.tt-actions button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.tt-actions button:disabled {
+  background: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.5;
+}
+
+/* Spinner */
+.tt-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top: 3px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Toast */
+.tt-toast {
+  visibility: hidden;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1e293b;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  position: fixed;
+  z-index: 1000;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.tt-toast.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+.tt-toast.error {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .tt-table td:not(.day-col) {
+    width: 180px;
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tt-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .tt-form-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .tt-field {
+    min-width: auto;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .tt-table th,
+  .tt-table td {
+    padding: 0.5rem;
+  }
+
+  .tt-table td:not(.day-col) {
+    width: 150px;
+    min-width: 150px;
+  }
+
+  .tt-table input {
+    font-size: 0.75rem;
+    padding: 0.375rem;
+  }
+
+  .tt-actions button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tt-container {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+
+  .tt-table th,
+  .tt-table td {
+    padding: 0.4rem;
+  }
+
+  .tt-table td:not(.day-col) {
+    width: 120px;
+    min-width: 120px;
+  }
+
+  .tt-table input {
+    font-size: 0.7rem;
+    padding: 0.3rem;
+  }
+
+  .day-col {
+    min-width: 80px;
+    width: 80px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Enhanced focus states */
+.tt-field select:focus,
+.tt-table input:focus,
+.tt-actions button:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}

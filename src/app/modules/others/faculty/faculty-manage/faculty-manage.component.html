@@ -1,0 +1,58 @@
+<div class="faculty-container">
+  <h2>FACULTY MANAGE</h2>
+
+
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    (input)="filterFaculty()"
+    placeholder="🔍 Search by First or Last Name"
+    class="search-bar"
+  />
+
+  <form (submit)="addOrUpdateFaculty(); $event.preventDefault();">
+    <input type="text" placeholder="First Name" [(ngModel)]="faculty.firstName" name="firstName" required />
+    <input type="text" placeholder="Last Name" [(ngModel)]="faculty.lastName" name="lastName" required />
+    <input type="text" placeholder="Phone" [(ngModel)]="faculty.phone" name="phone" required />
+    <input type="text" placeholder="Department" [(ngModel)]="faculty.department" name="department" required />
+
+    <button type="submit" class="btn-primary">
+      {{ editingId ? 'Update' : 'Add' }} Faculty
+    </button>
+    <button type="button" (click)="clearForm()" class="btn-secondary">Clear</button>
+  </form>
+
+  <!-- Table -->
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone</th>
+      <th>Department</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let f of pagedFaculty; let i = index">
+      <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+      <td>{{ f.firstName }}</td>
+      <td>{{ f.lastName }}</td>
+      <td>{{ f.phone }}</td>
+      <td>{{ f.department }}</td>
+      <td>
+        <button (click)="editFaculty(f)">Edit</button>
+        <button class="btn-danger" (click)="deleteFaculty(f.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div class="pagination-controls">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">&lt; Prev</button>
+    <span>Page {{ currentPage }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage * pageSize >= filteredFaculty.length">Next &gt;</button>
+  </div>
+</div>

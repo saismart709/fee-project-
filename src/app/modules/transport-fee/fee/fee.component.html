@@ -1,0 +1,365 @@
+
+
+    <div class="id">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Management System</title>
+   
+
+    <div class="container">
+        <div class="header">
+            <h1>Fee Module </h1>
+           
+        </div>
+
+        <div class="design-grid">
+            <!-- Admin Dashboard -->
+            <div class="design-card">
+                <h3>Admin Dashboard</h3>
+                <div style="padding: 10px 20px;">
+  <input type="text" id="feeSearchInput" placeholder="Search Fee Structure..." 
+         style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" 
+         onkeyup="searchFeeStructure()">
+        
+<div id="search-result" style="margin: 10px 20px; font-weight: bold; color: #333;"></div>
+
+</div>
+
+                <div class="mockup-container">
+                    <div class="mockup-header">Fee Management </div>
+                    <div class="nav-tabs">
+                        <button class="nav-tab">Fee Structures</button>
+                        <button class="nav-tab">transport fees</button>
+                        <button class="nav-tab">Reports</button>
+                    </div>
+                     <div class="design-card">
+                <h3>Fee Structure Setup</h3>
+                <div class="mockup-container">
+                    <div class="mockup-header">Create New Fee Structure</div>
+                    
+                    <div class="form-group">
+                        <label>Course/Program</label>
+                        <select class="form-control">
+                            <option>BCA (BACHLOR OF COMPUTER APPLICATION)</option>
+           <option>BBA (BACHLOR OF BUSINESS ADMINISTRATION)</option>
+            <option>BSC (BACHLOR OF COMPUTER SCIENCE)</option>
+             <option>BSC (ARTIFICAL INTILLIGENES)</option>
+              <option>BSC (FOOD TECHNOLOGY)</option> 
+               <option>BSc (ARGRICULTURE) </option>   
+                <option>BSc (FISHERIES)</option>  
+                 <option>MBA (MASTER OF BUSINESS ADMINISTRATION)</option>
+                  <option>MCA (MASTER OF COMPUTER APPLICATION)</option>
+
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Academic Year</label>
+                        <select class="form-control">
+                            <option>2024-2025</option>
+                            <option>2025-2026</option>
+                            <option>2026-2027</option>
+                            <option>2027-2028</option>
+                            <option>2028-2029</option>
+
+
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Student Category</label>
+                        <select class="form-control">
+                            <option>Regular</option>
+                            <option>Management Quota</option>
+                          
+                        </select>
+                    </div>
+                    
+                    <h4 style="margin: 20px 0 10px 0; color: #4a5568;">Fee Components</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tuition Fee</td>
+                                <td>₹50,000</td>
+                                <td><button class="btn btn-danger" style="padding: 5px 10px; font-size: 12px;">Remove</button></td>
+                            </tr>
+                            <tr>
+                                <td>Library Fee</td>
+                                <td>₹5,000</td>
+                                <td><button class="btn btn-danger" style="padding: 5px 10px; font-size: 12px;">Remove</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div style="margin-top: 20px;">
+                        <button class="btn btn-primary">Add Component</button>
+                        <button class="btn btn-success">Save Structure</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fee Structure Setup -->
+           
+
+
+            <!-- Student Fee Portal -->
+            <div class="design-card">
+                <h3>Student Fee Portal</h3>
+                <div class="mockup-container">
+                    <div class="mockup-header">My Fee Details - John Doe (CS001)</div>
+                    
+                    <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                        <h4 style="color: #2b6cb0; margin-bottom: 10px;">Fee Summary</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; text-align: center;">
+                            <div>
+                                <p style="font-size: 14px; color: #4a5568;">Total Amount</p>
+                                <p style="font-size: 18px; font-weight: bold; color: #2d3748;">₹1,20,000</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 14px; color: #4a5568;">Paid Amount</p>
+                                <p style="font-size: 18px; font-weight: bold; color: #38a169;">₹80,000</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 14px; color: #4a5568;">Pending Amount</p>
+                                <p style="font-size: 18px; font-weight: bold; color: #e53e3e;">₹40,000</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Fee Component</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tuition Fee</td>
+                                <td>₹75,000</td>
+                                <td><span class="status-badge status-paid">Paid</span></td>
+                                <td>15-Jul-2024</td>
+                            </tr>
+                            <tr>
+                                <td>Library Fee</td>
+                                <td>₹5,000</td>
+                                <td><span class="status-badge status-paid">Paid</span></td>
+                                <td>15-Jul-2024</td>
+                            </tr>
+                            <tr>
+                                <td>Lab Fee</td>
+                                <td>₹25,000</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>15-Aug-2024</td>
+                            </tr>
+                            <tr>
+                                <td>Hostel Fee</td>
+                                <td>₹15,000</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>15-Aug-2024</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    <div style="margin-top: 20px; text-align: center;">
+                        <button class="btn btn-primary">Pay Now</button>
+                        <button class="btn btn-success">Download Receipt</button>
+                        <!-- QR Code Modal -->
+                <div id="qr-modal" class="qr-modal" style="display: none;">
+                <div class="qr-content">
+                 <h3>Scan to Pay</h3>
+<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepnglogos.com%2Fpics%2Fqr-code&psig=AOvVaw3OSpAYpBXm8TCuRRE3pU5k&ust=1752035476954000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMCd0YO3rI4DFQAAAAAdAAAAABAE" alt="Scan QR" class="qr-image">
+          <button class="btn btn-danger" id="close-qr">Close</button>
+            </div>
+             </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Processing -->
+            <div class="design-card">
+                <h3>Payment Processing</h3>
+                <div class="mockup-container">
+                    <div class="mockup-header">Make Payment</div>
+                    
+                    <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                        <h4 style="color: #2b6cb0;">Payment Details</h4>
+                        <p><strong>Student:</strong> John Doe (CS001)</p>
+                        <p><strong>Amount to Pay:</strong> ₹40,000</p>
+                        <p><strong>Due Date:</strong> 15-Aug-2024</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <select class="form-control">
+                            <option>Credit/Debit Card</option>
+                            <option>Net Banking</option>
+                            <option>UPI</option>
+                            <option>Cash</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <input type="number" class="form-control" value="40000" placeholder="Enter amount">
+                    </div>
+                    
+                    <div class="payment-flow">
+                        <div class="flow-step">
+                            <div class="flow-step-number">1</div>
+                            <p>Select Payment</p>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="flow-step-number">2</div>
+                            <p>Gateway</p>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="flow-step-number">3</div>
+                            <p>Confirmation</p>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="flow-step-number">4</div>
+                            <p>Receipt</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="btn btn-primary">Proceed to Payment</button>
+                        <button class="btn btn-danger">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Reports -->
+            <div class="design-card">
+                <h3>Financial Reports</h3>
+                <div class="mockup-container">
+                    <div class="mockup-header">Fee Collection Reports</div>
+                    
+                    <div class="nav-tabs">
+                        <button class="nav-tab active">Daily</button>
+                        <button class="nav-tab">Monthly</button>
+                        <button class="nav-tab">Yearly</button>
+                        <button class="nav-tab">Custom</button>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div class="form-group">
+                            <label>From Date</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>To Date</label>
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Collections</th>
+                                <th>Pending</th>
+                                <th>Total Students</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>04-Jul-2024</td>
+                                <td>₹2,45,000</td>
+                                <td>₹45,000</td>
+                                <td>156</td>
+                            </tr>
+                            <tr>
+                                <td>03-Jul-2024</td>
+                                <td>₹3,20,000</td>
+                                <td>₹60,000</td>
+                                <td>189</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div style="margin-top: 20px;">
+                        <button class="btn btn-primary">Export PDF</button>
+                        <button class="btn btn-success">Export Excel</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outstanding Fees -->
+            <div class="design-card">
+                <h3>Outstanding Fees Management</h3>
+                <div class="mockup-container">
+                    <div class="mockup-header">Pending Payments</div>
+                    
+                    <div class="form-group">
+                        <label>Filter by Course</label>
+                        <select class="form-control">
+                            <option>All Courses</option>
+                            <option>B.Tech Computer Science</option>
+                            <option>MBA</option>
+                            <option>M.Tech</option>
+                        </select>
+                    </div>
+                    
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Course</th>
+                                <th>Pending Amount</th>
+                                <th>Days Overdue</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>29</td>
+                                <td>Teja</td>
+                                <td>B.Tech CSE</td>
+                                <td>₹40,000</td>
+                                <td style="color: #e53e3e; font-weight: bold;">5 days</td>
+                                <td>
+                                    <button class="btn btn-primary" style="padding: 5px 10px; font-size: 12px;">Send Reminder</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ME045</td>
+                                <td>Jane Smith</td>
+                                <td>M.Tech ME</td>
+                                <td>₹25,000</td>
+                                <td style="color: #e53e3e; font-weight: bold;">12 days</td>
+                                <td>
+                                    <button class="btn btn-primary" style="padding: 5px 10px; font-size: 12px;">Send Reminder</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div style="margin-top: 20px;">
+                        <button class="btn btn-primary">Send Bulk Reminders</button>
+                        <button class="btn btn-success">Generate Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+
+        
+
+         

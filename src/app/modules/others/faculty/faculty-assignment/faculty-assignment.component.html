@@ -1,0 +1,49 @@
+<div class="container">
+  <h2><strong>FACULTY ASSIGNMENTS</strong></h2>
+
+  <input class="search-bar" type="text" [(ngModel)]="searchQuery" (input)="filterAssignments()" placeholder="🔍 Search by Faculty or Student Name" />
+
+  <div class="form-row">
+    <input type="text" [(ngModel)]="assignment.facultyName" name="facultyName" placeholder="Faculty Name" />
+    <input type="text" [(ngModel)]="assignment.studentName" name="studentName" placeholder="Student Name" />
+    <input type="text" [(ngModel)]="assignment.subject" name="subject" placeholder="Subject" />
+    <input type="text" [(ngModel)]="assignment.semester" name="semester" placeholder="Semester" />
+    <input type="text" [(ngModel)]="assignment.year" name="year" placeholder="Year" />
+    <button (click)="addOrUpdateAssignment()" class="btn btn-blue">{{ editingId !== null ? 'Update' : 'Add Assignment' }}</button>
+    <button (click)="clearForm()" class="btn btn-gray">Clear</button>
+  </div>
+
+  <table class="styled-table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Faculty Name</th>
+      <th>Student Name</th>
+      <th>Subject</th>
+      <th>Semester</th>
+      <th>Year</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let a of pagedAssignments; let i = index">
+      <td>{{ i + 1 + (currentPage - 1) * pageSize }}</td>
+      <td>{{ a.facultyName }}</td>
+      <td>{{ a.studentName }}</td>
+      <td>{{ a.subject }}</td>
+      <td>{{ a.semester }}</td>
+      <td>{{ a.year }}</td>
+      <td>
+        <button class="btn btn-gray" (click)="editAssignment(a)">Edit</button>
+        <button class="btn btn-red" (click)="deleteAssignment(a.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">&lt; Prev</button>
+    <span>Page {{ currentPage }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage * pageSize >= filteredAssignments.length">Next &gt;</button>
+  </div>
+</div>

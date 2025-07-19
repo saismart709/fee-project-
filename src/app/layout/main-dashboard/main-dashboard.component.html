@@ -1,0 +1,72 @@
+<div class="main-layout">
+  <aside class="sidebar">
+    <h2>IDEAL COLLEGE OF ARTS & SCIENCE</h2>
+
+    <!-- Student Section with Submenu -->
+    <div class="dropdown" [class.active]="activeMenu === 'student'">
+      <button (click)="toggleMenu('student')">👨‍🎓 Student</button>
+      <ul [class.show]="activeMenu === 'student'">
+        <li><a routerLink="/dashboard/student/attendance" routerLinkActive="active">Attendance</a></li>
+        <li><a routerLink="/dashboard/student/exams" routerLinkActive="active">Exams</a></li>
+        <li><a routerLink="/dashboard/student/marks" routerLinkActive="active">Marks</a></li>
+      </ul>
+    </div>
+
+    <!-- Lab & Library Section with Submenu -->
+    <div class="dropdown" [class.active]="activeMenu === 'lab'">
+      <button (click)="toggleMenu('lab')">🔬 Lab & Library</button>
+      <ul [class.show]="activeMenu === 'lab'">
+        <li><a routerLink="/dashboard/lab" routerLinkActive="active">Laboratory</a></li>
+        <li><a routerLink="/dashboard/library" routerLinkActive="active">Library</a></li>
+      </ul>
+    </div>
+
+    <!-- Transport & Fee Section with Submenu -->
+    <div class="dropdown" [class.active]="activeMenu === 'transport'">
+      <button (click)="toggleMenu('transport')">🚌 Transport & Fee</button>
+      <ul [class.show]="activeMenu === 'transport'">
+        <li><a routerLink="/dashboard/transport" routerLinkActive="active">Transport</a></li>
+        <li><a routerLink="/dashboard/fee" routerLinkActive="active">Fee Management</a></li>
+      </ul>
+    </div>
+
+    <!-- Others Section with Nested Submenu -->
+    <div class="dropdown" [class.active]="activeMenu === 'others'">
+      <button (click)="toggleMenu('others')">📁 Others</button>
+      <ul [class.show]="activeMenu === 'others'">
+        <li>
+          <button class="nested-button" [class.active]="activeSubMenu === 'faculty'" (click)="toggleSubMenu('faculty')">🧑‍🏫 Faculty</button>
+          <ul [class.show]="activeSubMenu === 'faculty'">
+            <li><a routerLink="/dashboard/faculty/manage" routerLinkActive="active">Manage Faculty</a></li>
+            <li><a routerLink="/dashboard/faculty/assignment" routerLinkActive="active">Faculty Assignments</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="nested-button" [class.active]="activeSubMenu === 'timetable'" (click)="toggleSubMenu('timetable')">🕒 Timetable</button>
+          <ul [class.show]="activeSubMenu === 'timetable'">
+            <li><a routerLink="/dashboard/timetable/create" routerLinkActive="active">Create Timetable</a></li>
+            <li><a routerLink="/dashboard/timetable/view" routerLinkActive="active">View Timetable</a></li>
+            <li><a routerLink="/dashboard/timetable/generate" routerLinkActive="active">Generate TimeTable</a></li>
+          </ul>
+        </li>
+        <li><a routerLink="/dashboard/office" routerLinkActive="active">🏢 Office</a></li>
+      </ul>
+    </div>
+
+    <!-- Security Section (Direct Link) -->
+    <div class="dropdown">
+      <a routerLink="/dashboard/security" routerLinkActive="active">🔐 Security</a>
+    </div>
+
+    <!-- Reports Section (Direct Link) -->
+    <div class="dropdown">
+      <a routerLink="/dashboard/reports" routerLinkActive="active">📊 Reports</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

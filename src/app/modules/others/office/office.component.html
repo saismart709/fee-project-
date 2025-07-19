@@ -1,0 +1,54 @@
+<div class="office-container">
+  <h2>🏢 Office Management</h2>
+
+  <input class="search-bar" [(ngModel)]="searchQuery" (input)="applyFilters()" placeholder="Search by name, role or gender..." />
+
+  <form (ngSubmit)="addOrUpdate()">
+    <input type="text" placeholder="Name" [(ngModel)]="staff.name" name="name" required>
+    <input type="text" placeholder="Role" [(ngModel)]="staff.role" name="role" required>
+    <input type="text" placeholder="Phone" [(ngModel)]="staff.phone" name="phone" required>
+
+    <select [(ngModel)]="staff.gender" name="gender" required>
+      <option value="" disabled selected>Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <button type="submit" class="btn-primary">{{ editingId ? 'Update' : 'Add' }}</button>
+    <button type="button" class="btn-secondary" (click)="resetForm()">Clear</button>
+  </form>
+
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>👤 Name</th>
+      <th>🧑 Role</th>
+      <th>📞 Phone</th>
+      <th>⚧ Gender</th>
+      <th>⚙️ Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let s of paginatedList; let i = index">
+      <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+      <td>{{ s.name }}</td>
+      <td>{{ s.role }}</td>
+      <td>{{ s.phone }}</td>
+      <td>{{ s.gender }}</td>
+      <td>
+        <button (click)="edit(s)">Edit</button>
+        <button class="btn-danger" (click)="delete(s.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination Controls -->
+  <div class="pagination">
+    <button (click)="changePage(-1)" [disabled]="currentPage === 1">← Prev</button>
+    <span>Page {{ currentPage }} of {{ Math.ceil(filteredList.length / pageSize) }}</span>
+    <button (click)="changePage(1)" [disabled]="currentPage >= filteredList.length / pageSize">Next →</button>
+  </div>
+</div>

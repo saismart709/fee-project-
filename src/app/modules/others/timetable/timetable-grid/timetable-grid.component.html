@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="filter-section">
+    <label>
+      Department:
+      <select [(ngModel)]="selectedDepartment" (change)="loadGrid()">
+        <option value="">-- Select Department --</option>
+        <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
+      </select>
+    </label>
+
+    <label>
+      Semester:
+      <select [(ngModel)]="selectedSemester" (change)="loadGrid()">
+        <option value="">-- Select Semester --</option>
+        <option *ngFor="let sem of semesters" [value]="sem">{{ sem }}</option>
+      </select>
+    </label>
+
+    <button (click)="downloadExcel()">Excel</button>
+    <button (click)="downloadPDF()">PDF</button>
+  </div>
+
+  <table class="timetable-table">
+    <thead>
+    <tr>
+      <th>Day</th>
+      <th *ngFor="let p of periods">Period {{ p }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let day of days">
+      <td>{{ day }}</td>
+      <td *ngFor="let entry of timetableMatrix[day]">
+        <div class="cell">
+          <div *ngIf="entry">
+            <strong>{{ entry.subject }}</strong><br />
+            <small>{{ entry.facultyName }}</small>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
